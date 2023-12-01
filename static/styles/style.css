@@ -1,0 +1,60 @@
+* {
+    
+    margin: 0px;
+    padding: 0px
+}
+body {
+    background-color: rgb(243, 255, 243);
+    font-family: 'Poppins', sans-serif;
+}
+.navbar {
+    background-color: rgb(13, 120, 13);
+    color: white
+}
+.navbar p {
+    padding: 5px;
+    font-size: 50px;
+    margin-left: 50px;
+}
+.brand {
+    font-family: 'Smooch', cursive;
+}
+.main {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+/* file upload button */
+input[type="file"]::file-selector-button {
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px 16px;
+    cursor: pointer;
+    background-color: rgb(139, 229, 138);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+}
+input {
+    font-size: 20px;
+}
+button {
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px 16px;
+    cursor: pointer;
+    background-color: rgb(139, 229, 138);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+}
+.response {
+    padding: 100px;
+}
+.pred {
+    text-align: center;
+}
