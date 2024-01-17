@@ -2,14 +2,13 @@ from flask import Flask, render_template, request
 import tensorflow as tf
 import cv2
 import numpy as np
-import g4f
+from openai import OpenAI
 import re
 
-def add_newline(string):
-    pattern = r'(\d+\.)' 
-    replacement = r'\1\n'
-    new_string = re.sub(pattern,'\n', string)
-    return new_string
+
+client = OpenAI(
+    api_key="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",
+)
 
 app = Flask(__name__)
 
@@ -43,17 +42,17 @@ def index():
         preds = leaf.predict(img)
         max_idx = np.argmax(preds)
         prediction = class_names[max_idx]
-
-        g4f.debug.logging = True  # Enable logging
-
-        response = g4f.ChatCompletion.create(
+        print("Predicted : ", prediction)
+        response = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"What are the benifits of using {prediction}",
+                }
+            ],
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": f"What are the benifits of using {prediction}. Give at most 5 benifits with numbers"}],
-            # messages=[{"role": "user", "content": f"How to add newline to a string when number followed by a dot appears"}],
-            provider=g4f.Provider.GptGo,
-            # stream=True,
         )
-        
+        response=response.choices[0].message.content 
         print(response)
         return render_template('index.html', prediction=prediction, file_path=file_path,gpt_response=response.replace("\n", "<br>"))
 
